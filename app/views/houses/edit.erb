@@ -1,3 +1,7 @@
 <h1>Edit House</h1>
 
-<!-- form goes here -->
+<form action="/houses/<%=@house.id%>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="address">Address: </label><input type="text" id="address" name="house[:address]" value="<%=@house.address%>">
+  <input type="submit" value="Update">
+</form>

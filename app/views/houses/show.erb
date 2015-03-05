@@ -1,9 +1,18 @@
-<h1>Houses Show Page</h1>
+<h1><%= @house.address %></h1>
 
-<!-- show the address here -->
+<h2>Candies for the taking!</h2>
+<% @house.unclaimed_candies.each do |candy| %>
+  <ul>
+    <li><%= candy.name %></li>
+  </ul>
+<% end %>
 
-<!-- iterate through unclaimedcandies here -->
+<form action="/houses/<%=@house.id%>/trick-or-treat" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <% @kids.each do |kid| %>
+    <input type="radio" name="kid_id" value="<%= kid.id %>"> <%= kid.name %><br>
+  <% end %>
+  <input type="submit" value="Trick or treat!">
+</form>
 
-<!-- put the trick-or-treat form here, you'll be subitting kid_id -->
-
-<!-- link to this house's edit page here -->
+<a href="/houses/<%=@house.id%>/edit">Edit this house</a>
